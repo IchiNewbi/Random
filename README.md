@@ -8,6 +8,7 @@ rm <dirpath> deletes a file
 <br/>
 cd <dirpath> navigate to a directory
 <br/>
+<br/>
 # Git commands:
 To add a repository to your computer:
 <br/>
