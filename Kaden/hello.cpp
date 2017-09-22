@@ -5,7 +5,7 @@ using namespace std;
 /*int main() is the entry point once the program is run*/
 int main(){
 	/*cout echoes its content to the screen*/
-	/*endl and \n are used as line breaks*/
+	/*endl and \n are used as line breaks \n\n breaks two lines*/
 	cout<<"Hello Kaden!"<<endl;
 	/*int is used to tell the variable ahead of it to recognise it as an 		integer*/
 	int x=10;
