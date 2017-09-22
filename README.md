@@ -9,7 +9,7 @@ rm <dirpath> deletes a file
 cd <dirpath> navigate to a directory
 <br/>
 <br/>
-# Git commands:
+Git commands:
 To add a repository to your computer:
 <br/>
 git clone http://github.com/<username>/<repository>
