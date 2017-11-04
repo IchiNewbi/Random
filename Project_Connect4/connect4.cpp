@@ -45,24 +45,32 @@ bool isOccupied(char board[7][6], int row, int col)
 	return !isEmpty(board, row, col);
 }
 
-void drop(int col)
+void drop(int c, int p)
 {
-	for (int col = 0; col < 7; col++)
-	{
-		for (int row = 0; row < 6; row++)
-		{
-			
-		}
-	}
+
 }
+
 int main()
 {
+
 	char board[7][6];
 	setup(board);
-	draw_board(board);
-	int player = 1;
-	cout << "What column do you, player "<<player<<", want to place your piece?"<<endl;//IMPORTANT STUFF DO THIS PLZ!!!!!!!!!!!!!!!!!!!!!
-	cin >> int choice;
+
+	int p = 1;
+	int c;
+	int game_win = 0;
+
+	while (game_win == 0)
+	{
+		system("cls");
+		draw_board(board);
+		cout << endl;
+		cout << "What column do you, player " << p << ", want to place your piece?" << endl;//IMPORTANT STUFF DO THIS PLZ!!!!!!!!!!!!!!!!!!!!!
+		cin >> c;
+		drop(c, p);
+		p = 1 - p;
+	}
+
     return 0;
 }
 
