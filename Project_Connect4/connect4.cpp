@@ -20,14 +20,16 @@ void setup(char board[7][6])//board is set to [7][6] which represents column and
 
 void draw_board(char board[7][6])//the board is drawn from the board array
 {
+	cout << "====================="<<endl;
 	for (int row = 0; row < 6; row++)
 	{
 		for (int col = 0; col < 7; col++)
 		{
-			cout <<" "<<board[col][row]<<" ";//draws each character in each row
+			cout <<"|"<<board[col][row]<<"|";//draws each character in each row
 		}
-		cout << endl;//breaks the line each row down
+		cout <<endl;//breaks the line each row down
 	}
+	cout << "=====================" << endl;
 }
 
 char getBoardValue(char board[7][6], int row, int col)
