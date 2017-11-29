@@ -79,31 +79,40 @@ void drop(int c, int p)
 
 bool checkWin(int p)
 {
+	bool win;
 	for (int i = 0; i < MAXIMUM_ROWS; i++)
 	{
 		for (int x = 0; i < MAXIMUM_COLS; i++)
 		{
-
+			if (win != true) 
+			{
+				win = checkHorizontal();
+			}
+			if (win != true)
+			{
+				win = checkVertical();
+			}
+			if (win != true)
+			{
+				win = checkDiagonal();
+			}
+			
+			return win;
 		}
 	}
 }
 
-bool checkUp()
+bool checkVertical()
 {
 
 }
 
-bool checkDown()
+bool checkDiagonal()
 {
 
 }
 
-bool checkLeft()
-{
-
-}
-
-bool checkRight()
+bool checkHorizontal()
 {
 
 }
@@ -134,7 +143,7 @@ int main()
 			}
 			draw_board();//draws previous board for their reference
 			cout << endl;//break
-			cout << "What column do you, player " << p << ", want to place your piece?" << endl;//text for the choice
+			cout << "What column do you, player " << p + 1 << ", want to place your piece?" << endl;//text for the choice
 			cin >> c;//recieves users choice
 			if (c > MAXIMUM_COLS || c < 1)//tests if answer is a valid column number
 			{//bad
