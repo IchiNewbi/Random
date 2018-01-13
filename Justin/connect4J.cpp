@@ -2,32 +2,63 @@
 //
 
 #include "stdafx.h"
-#include "iostream"
+#include <iostream>
 
 using namespace std;
+#define	empty_v	'_'
+#define	max_r	(6)
+#define max_c	(7)
 
-const int num_col = 6;
-const int num_row = 7;
-int board[num_col][num_row];
+char board[max_c][max_r];
 
-void init_board()
+int chars_p = 0;
+
+void setup()
 {
-	for (int c = 0; c < num_col; c++)
+	for (int c = 0; c < max_c; c++)
 	{
-		for (int r = 0; r < num_row; r++)
+		for (int r = 0; r < max_r; r++)
 		{
-			board[c][r] = -1;
+			board[c][r] = empty_v;
 		}
 	}
 }
- 
+void drawboard()
+{
+	system("cls");
+	cout << "---------------------" << endl;
+	for (int r = 0; r < max_r; r++)
+	{
+		for (int c = 0; c < max_c; c++)
+		{
+			cout << "|" << board[c][r] << "|";
+		}
+
+		cout << endl;
+	}
+	cout << "---------------------" << endl;
+}
+char get_board_val(int c, int r)
+{
+	return board[c][r]
+}
+bool isEmpty(int c,int r)
+{
+	return get_board_val(c, r) == empty_v;
+}
+bool is_oc(int c, int r)
+{
+	return !isEmpty(c,r)
+}
 
 int main()
 {
+	setup();
+	drawboard();
 	int player = 0;
 	while (true)
 	{
-		cout << "Enter what column you want to play your Token in?";
+		cout << "Enter what column you want to play your Token in? - ";
 		int column;
 		cin >> column;
 		cout << column << endl;
