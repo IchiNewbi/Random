@@ -228,7 +228,7 @@ int main()
 		p = 1 - p;//flips the player variable
 	} while (win == 0);//runs as long as nobody has won
 
-1	return 0;
+	return 0;
 }
 
 
