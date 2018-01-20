@@ -74,60 +74,99 @@ void drop(int c, int p)
 			break;
 		}
 	}
+}
 
+bool checkVertical(int p)
+{
+	for (int c = 0; c < MAXIMUM_COLS; c++)
+	{
+		int count = 0;
+		for (int r = 0; r < MAXIMUM_ROWS; r++)
+		{
+			if (board[c][r] == (p + 1))
+			{
+				count++;
+			}
+			else
+			{
+				count = 0;
+			}
+			if (count == 4)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool checkLeftDiagonal(int p)
+{
+	return 0;
+}
+
+bool checkRightDiagonal(int p)
+{
+	return 0;
+}
+
+bool checkHorizontal(int p)
+{
+	for (int r = 0; r < MAXIMUM_ROWS; r++)
+	{
+		int count = 0;
+		for (int c = 0; c < MAXIMUM_COLS; c++)
+		{
+			if (board[c][r] == (p + 1))
+			{
+				count++;
+			}
+			else
+			{
+				count = 0;
+			}
+			if (count == 4)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
 bool checkWin(int p)
 {
-	bool win;
-	for (int i = 0; i < MAXIMUM_ROWS; i++)
+	if (checkVertical(p))
 	{
-		for (int x = 0; i < MAXIMUM_COLS; i++)
-		{
-			if (win != true) 
-			{
-				win = checkHorizontal();
-			}
-			if (win != true)
-			{
-				win = checkVertical();
-			}
-			if (win != true)
-			{
-				win = checkDiagonal();
-			}
-			
-			return win;
-		}
+		return true;
+	}
+	if (checkHorizontal(p))
+	{
+		return true;
+	}
+	if (checkLeftDiagonal(p))
+	{
+		return true;
+	}
+	if (checkRightDiagonal(p))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
 	}
 }
-
-bool checkVertical()
-{
-
-}
-
-bool checkDiagonal()
-{
-
-}
-
-bool checkHorizontal()
-{
-
-}
-
 
 int main()
 {
 	setup();//generates and fills empty spaces in the board
 	int c = 0;
 	int p = 1;//player that starts first
-	int game_win = 0;//default is zero so the game loop runs
-
-	while (game_win == 0)//runs as long as nobody has won
+	int win = 0;//default is zero so the game loop runs
+	
+	do
 	{
-
 		bool v = 0;//presets the error return for the answer validation seen below to false
 		do
 		{
@@ -155,11 +194,42 @@ int main()
 			}
 		} while (v == 1);//repeat if error
 		drop(c - 1, p);//drop in column from player
-		checkWin(p);
+		if (checkWin(p))
+		{
+			int e = 0;
+			do
+			{
+				int r;
+				system("cls");
+				system("title Win = 1");
+				cout << "Player, " << p << ", wins!" << endl;
+				cout << "Restart? [1/2]" << endl;
+				cin >> r;//recieves users choice
+				if (r == 1)
+				{
+					setup();
+				}
+				else if (r == 2)
+				{
+					win = 1;
+					break;
+				}
+				else
+				{
+					e = 1;
+				}
+			} while (e == 1);
+		}
+		else
+		{
+			system("title Win = 0");
+			cout << "No body has one" << endl;
+		}
 		p = 1 - p;//flips the player variable
-	}
+	} while (win == 0);//runs as long as nobody has won
 
-	return 0;
+1	return 0;
 }
+
 
 
