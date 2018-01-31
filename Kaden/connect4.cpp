@@ -102,7 +102,29 @@ bool checkVertical(int p)
 
 bool checkLeftDiagonal(int p)
 {
-	return 0;
+	for (int c = 0; c < MAXIMUM_COLS - 3; c++)
+	{
+		for (int r = 0; r < MAXIMUM_ROWS - 3; r++)
+		{
+			int count = 0;
+			for (int i = 0; i < MAXIMUM_ROWS - 3 - r; i++)
+			{
+				if (board[c + i][i] == (p + 1))
+				{
+					count++;
+				}
+				else
+				{
+					count = 0;
+				}
+				if (count == 4)
+				{
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }
 
 bool checkRightDiagonal(int p)
@@ -164,7 +186,7 @@ int main()
 	int c = 0;
 	int p = 1;//player that starts first
 	int win = 0;//default is zero so the game loop runs
-	
+
 	do
 	{
 		bool v = 0;//presets the error return for the answer validation seen below to false
@@ -227,9 +249,9 @@ int main()
 		}
 		p = 1 - p;//flips the player variable
 	} while (win == 0);//runs as long as nobody has won
+	
 
 	return 0;
 }
-
 
 
