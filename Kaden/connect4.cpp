@@ -100,16 +100,16 @@ bool checkVertical(int p)
 	return false;
 }
 
-bool checkLeftDiagonal(int p)
+bool checkUpRightDiagonal(int p)
 {
-	for (int c = 0; c < MAXIMUM_COLS - 3; c++)
+	for (int r = 0; r < MAXIMUM_ROWS - 3; r++)
 	{
-		for (int r = 0; r < MAXIMUM_ROWS - 3; r++)
+		for (int c = 0; c < MAXIMUM_COLS - 3; c++)
 		{
 			int count = 0;
-			for (int i = 0; i < MAXIMUM_ROWS - 3 - r; i++)
+			for (int x = 0; x < 4; x++)
 			{
-				if (board[c + i][i] == (p + 1))
+				if (board[c+x][r+x] == (p + 1))
 				{
 					count++;
 				}
@@ -127,7 +127,7 @@ bool checkLeftDiagonal(int p)
 	return false;
 }
 
-bool checkRightDiagonal(int p)
+bool checkDownRightDiagonal(int p)
 {
 	return 0;
 }
@@ -166,11 +166,11 @@ bool checkWin(int p)
 	{
 		return true;
 	}
-	if (checkLeftDiagonal(p))
+	if (checkDownRightDiagonal(p))
 	{
 		return true;
 	}
-	if (checkRightDiagonal(p))
+	if (checkUpRightDiagonal(p))
 	{
 		return true;
 	}
@@ -184,7 +184,7 @@ int main()
 {
 	setup();//generates and fills empty spaces in the board
 	int c = 0;
-	int p = 1;//player that starts first
+	int p = 0;//player that starts first
 	int win = 0;//default is zero so the game loop runs
 
 	do
@@ -249,7 +249,7 @@ int main()
 		}
 		p = 1 - p;//flips the player variable
 	} while (win == 0);//runs as long as nobody has won
-	
+
 
 	return 0;
 }
