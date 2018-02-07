@@ -1,7 +1,5 @@
-// ConsoleApplication6.cpp : Defines the entry point for the console application.
 
-//
-
+// ConsoleApplication6.cpp: Defines the entry point for the console application. 
 
 
 #include "stdafx.h"
@@ -100,18 +98,16 @@ bool is_oc(int c, int r)
 
 }
 
-void drop (int col,int player)
+void drop(int col, int p)
 {
-	for (int row = max_r - 1;0 <= row ;row--)
+	for (int row = max_r-1; row >= 0; row--)
 	{
 		if (board[col][row] == '_')
 		{
-			if (player == 0)
+			if (p == 0)
 			{
 				board[col][row] = 'X';
-			}
-			
-			else
+			} else
 			{
 				board[col][row] = 'O';
 			}
@@ -134,13 +130,22 @@ int main()
 
 	{
 
-		cout << "Enter what column you want to play your Token in? - ";
+		cout << "Enter what column you want to play your token in?" << endl ;
 
 		int column;
 
 		cin >> column;
-
-		cout << column << endl;
+		if (column <= max_c - 1 && column >= 0)
+		{
+			drop(column, player);
+			player = 1 - player;
+			drawboard();
+		}
+		else
+		{
+			cout << "That number is not valid!!!!!!!!!!!!! (use 0-"<<max_c-1<<")" << endl;
+		}
+		
 
 	}
 
