@@ -109,7 +109,7 @@ bool checkUpRightDiagonal(int p)
 			int count = 0;
 			for (int x = 0; x < 4; x++)
 			{
-				if (board[c+x][r+x] == (p + 1))
+				if (board[c + x][r + x] == (p + 1))
 				{
 					count++;
 				}
@@ -129,7 +129,29 @@ bool checkUpRightDiagonal(int p)
 
 bool checkDownRightDiagonal(int p)
 {
-	return 0;
+	for (int r = 0; r < MAXIMUM_ROWS - 3; r++)
+	{
+		for (int c = 3; c < MAXIMUM_COLS; c++)
+		{
+			int count = 0;
+			for (int x = 4; x > 0; x--)
+			{
+				if (board[c + x][r + x] == (p + 1))
+				{
+					count++;
+				}
+				else
+				{
+					count = 0;
+				}
+				if (count == 4)
+				{
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }
 
 bool checkHorizontal(int p)
