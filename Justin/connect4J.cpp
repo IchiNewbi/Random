@@ -100,14 +100,15 @@ bool is_oc(int c, int r)
 
 void drop(int col, int p)
 {
-	for (int row = max_r-1; row >= 0; row--)
+	for (int row = max_r - 1; row >= 0; row--)
 	{
 		if (board[col][row] == '_')
 		{
 			if (p == 0)
 			{
 				board[col][row] = 'X';
-			} else
+			}
+			else
 			{
 				board[col][row] = 'O';
 			}
@@ -130,7 +131,7 @@ int main()
 
 	{
 
-		cout << "Enter what column you want to play your token in?" << endl ;
+		cout << "Enter what column you want to play your token in?" << endl;
 
 		int column;
 
@@ -143,12 +144,47 @@ int main()
 		}
 		else
 		{
-			cout << "That number is not valid!!!!!!!!!!!!! (use 0-"<<max_c-1<<")" << endl;
+			cout << "That number is not valid!!!!!!!!!!!!! (use 0-" << max_c - 1 << ")" << endl;
 		}
-		
+
 
 	}
 
 	return 0;
+
+} 	
+
+bool checkLeftDiagonal(int p) {
+	return false;
+}
+
+bool checkRightDiagonal(int p) {
+	return false;
+}
+
+bool checkHorizontal(int p) {
+	return false;
+}
+
+bool checkVertical(int p) {
+	return false;
+}
+
+bool winCheck(int p) {
+	if (checkVerticle(p)) {
+		return true;
+	}
+	if (checkHorizontal(p)) {
+		return true;
+	}
+	if (checkRightDiagonal(p)) {
+		return true;
+	}
+	if (checkLeftDiagonal(p)) {
+		return true;
+	}
+	return false;
+
+
 
 }
